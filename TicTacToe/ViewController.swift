@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var turn = 0;
+    var turns = 0;
     var array:[[Int]] = [[3,3,3],[3,3,3],[3,3,3]]
 
     @IBOutlet weak var btn0: UIButton!
@@ -32,63 +33,75 @@ class ViewController: UIViewController {
     }
 
     @IBAction func myAction(_ sender: UIButton) {
-        var id = sender.tag
-        var column = sender.tag%3
-        var row = sender.tag/3
-        if array[row][column] != 3 {
-            let alert = UIAlertController(title: "Invalid Move", message: "You have made an invalid move please choose empty cell", preferredStyle: UIAlertControllerStyle.alert)
-            let dismissAction = UIAlertAction(title: "dismiss", style: UIAlertActionStyle.default) {
+        turns += 1
+        if turns == 9 {
+            let alert = UIAlertController(title: "Draw", message: "do you want to restart", preferredStyle: UIAlertControllerStyle.alert)
+            let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default) {
                 (result : UIAlertAction) -> Void in
-                print("dismiss")
+                self.array = [[3,3,3],[3,3,3],[3,3,3]]
+                self.btn1.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                self.btn2.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                self.btn3.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                self.btn4.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                self.btn5.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                self.btn6.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                self.btn7.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                self.btn8.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                self.btn0.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                self.turn = 0
             }
-            alert.addAction(dismissAction)
+            alert.addAction(yesAction)
             self.present(alert, animated: true, completion: nil)
         }else{
-            if turn == 0 {
-                sender.setImage(#imageLiteral(resourceName: "zero"), for: UIControlState.normal)
-                array[row][column] = 0
-                turn = 1
-            }else if turn == 1{
-                sender.setImage(#imageLiteral(resourceName: "cross"), for: UIControlState.normal)
-                array[row][column] = 1
-                turn = 0
-            }
-            //#MARK: check if game has finished
-            let result = isGameFinished(array: array)
-            if result == true {
-                let winner : String?
-                if turn == 0{
-                    winner = "cross"
-                }else{
-                    winner = "zero"
-                }
-                let alert = UIAlertController(title: winner! + "Won", message: "do you want to restart", preferredStyle: UIAlertControllerStyle.alert)
-                let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default) {
+            let id = sender.tag
+            let column = id%3
+            let row = id/3
+            if array[row][column] != 3 {
+                let alert = UIAlertController(title: "Invalid Move", message: "You have made an invalid move please choose empty cell", preferredStyle: UIAlertControllerStyle.alert)
+                let dismissAction = UIAlertAction(title: "dismiss", style: UIAlertActionStyle.default) {
                     (result : UIAlertAction) -> Void in
-                    self.array = [[3,3,3],[3,3,3],[3,3,3]]
-                    self.btn1.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn2.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn3.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn4.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn5.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn6.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn7.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn8.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn0.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.turn = 0
+                    print("dismiss")
                 }
-                alert.addAction(yesAction)
+                alert.addAction(dismissAction)
                 self.present(alert, animated: true, completion: nil)
+            }else{
+                if turn == 0 {
+                    sender.setImage(#imageLiteral(resourceName: "zero"), for: UIControlState.normal)
+                    array[row][column] = 0
+                    turn = 1
+                }else if turn == 1{
+                    sender.setImage(#imageLiteral(resourceName: "cross"), for: UIControlState.normal)
+                    array[row][column] = 1
+                    turn = 0
+                }
+                //#MARK: check if game has finished
+                let result = isGameFinished(array: array)
+                if result == true {
+                    let winner : String?
+                    if turn == 0{
+                        winner = "cross"
+                    }else{
+                        winner = "zero"
+                    }
+                    let alert = UIAlertController(title: winner! + "Won", message: "do you want to restart", preferredStyle: UIAlertControllerStyle.alert)
+                    let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default) {
+                        (result : UIAlertAction) -> Void in
+                        self.array = [[3,3,3],[3,3,3],[3,3,3]]
+                        self.btn1.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                        self.btn2.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                        self.btn3.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                        self.btn4.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                        self.btn5.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                        self.btn6.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                        self.btn7.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                        self.btn8.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                        self.btn0.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                        self.turn = 0
+                    }
+                    alert.addAction(yesAction)
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
-            //#MARK: check for the possibility of winning
-            
-            //#MARK: check for the possibility of users winning
-            
-            //#MARK: pick center cell
-            
-            //#MARK: pick corner cell
-            
-            //#MARK: pi
         }
     }
 }
@@ -132,4 +145,3 @@ func isGameFinished(array : [[Int]]) -> Bool {
     }
     return false
 }
-
