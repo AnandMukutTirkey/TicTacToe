@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -97,15 +96,15 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="btn0" destination="QC7-ad-YU6" id="Whg-h8-fPa"/>
-                        <outlet property="btn1" destination="TVD-CV-Kko" id="AD0-qr-HIQ"/>
-                        <outlet property="btn2" destination="LD4-FL-Kll" id="smR-DF-NCd"/>
-                        <outlet property="btn3" destination="Lw5-8d-m3a" id="sDK-EL-8lZ"/>
-                        <outlet property="btn4" destination="TTP-5v-aq3" id="jKR-35-7QZ"/>
-                        <outlet property="btn5" destination="S1K-fP-Jzz" id="iQK-p3-4dT"/>
-                        <outlet property="btn6" destination="rPy-Gi-rcR" id="XBp-W1-h8j"/>
-                        <outlet property="btn7" destination="eVm-p1-xEU" id="6mo-kg-Noe"/>
-                        <outlet property="btn8" destination="H6w-GU-fmA" id="AD9-Ra-f3k"/>
+                        <outletCollection property="buttons" destination="TVD-CV-Kko" collectionClass="NSMutableArray" id="Ozx-m0-AWX"/>
+                        <outletCollection property="buttons" destination="QC7-ad-YU6" collectionClass="NSMutableArray" id="QGG-iY-2d0"/>
+                        <outletCollection property="buttons" destination="LD4-FL-Kll" collectionClass="NSMutableArray" id="AiX-Og-gUZ"/>
+                        <outletCollection property="buttons" destination="Lw5-8d-m3a" collectionClass="NSMutableArray" id="q0f-pY-aqS"/>
+                        <outletCollection property="buttons" destination="TTP-5v-aq3" collectionClass="NSMutableArray" id="d4M-VX-WTp"/>
+                        <outletCollection property="buttons" destination="S1K-fP-Jzz" collectionClass="NSMutableArray" id="63f-7N-uhN"/>
+                        <outletCollection property="buttons" destination="rPy-Gi-rcR" collectionClass="NSMutableArray" id="S4Q-3y-OE3"/>
+                        <outletCollection property="buttons" destination="eVm-p1-xEU" collectionClass="NSMutableArray" id="bVB-55-Q4m"/>
+                        <outletCollection property="buttons" destination="H6w-GU-fmA" collectionClass="NSMutableArray" id="trd-H4-fcM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

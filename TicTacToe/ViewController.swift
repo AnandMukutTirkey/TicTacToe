@@ -13,16 +13,7 @@ class ViewController: UIViewController {
     var turns = 0;
     var array:[[Int]] = [[3,3,3],[3,3,3],[3,3,3]]
 
-    @IBOutlet weak var btn0: UIButton!
-    @IBOutlet weak var btn1: UIButton!
-    @IBOutlet weak var btn2: UIButton!
-    @IBOutlet weak var btn3: UIButton!
-    @IBOutlet weak var btn4: UIButton!
-    @IBOutlet weak var btn5: UIButton!
-    @IBOutlet weak var btn6: UIButton!
-    @IBOutlet weak var btn7: UIButton!
-    @IBOutlet weak var btn8: UIButton!
-
+    @IBOutlet var buttons: [UIButton]!
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -68,15 +59,9 @@ class ViewController: UIViewController {
                 let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default) {
                     (result : UIAlertAction) -> Void in
                     self.array = [[3,3,3],[3,3,3],[3,3,3]]
-                    self.btn1.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn2.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn3.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn4.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn5.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn6.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn7.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn8.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn0.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                    for i in 0...self.buttons.count-1{
+                        self.buttons[i].setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                    }
                     self.turn = 0
                 }
                 alert.addAction(yesAction)
@@ -87,16 +72,11 @@ class ViewController: UIViewController {
                 let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default) {
                     (result : UIAlertAction) -> Void in
                     self.array = [[3,3,3],[3,3,3],[3,3,3]]
-                    self.btn1.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn2.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn3.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn4.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn5.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn6.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn7.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn8.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
-                    self.btn0.setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                    for i in 0...self.buttons.count-1{
+                        self.buttons[i].setImage(#imageLiteral(resourceName: "blank"), for: UIControlState.normal)
+                    }
                     self.turn = 0
+                    self.turns = 0
                 }
                 alert.addAction(yesAction)
                 self.present(alert, animated: true, completion: nil)
